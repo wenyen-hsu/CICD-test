@@ -63,9 +63,8 @@ my %golden_hash;
 my %result_hash;
 
 if ($mode == 1) {
-    my @golden_files;
-    my @result_files;
-    (@golden_files, @result_files) = dir_mode($golden_file_dir, $result_file_dir);
+    my @golden_files = get_file_list($golden_file_dir);
+    my @result_files = get_file_list($result_file_dir);
     foreach my $golden_file (@golden_files) {
         open(my $golden_fh, '<', File::Spec->catfile($golden_file_dir, $golden_file)) or die "cannot read $golden_file: $!";
             while (my $line = <$golden_fh>) {
@@ -75,13 +74,14 @@ if ($mode == 1) {
         }
         close($golden_fh);
     }
-
+    print "golden_files: @golden_files\n";
+    print "result_files: @result_files\n";
     foreach my $result_file (@result_files) {
         open(my $result_fh, '<', File::Spec->catfile($result_file_dir, $result_file)) or die "cannot read $result_file: $!";
             while (my $line = <$result_fh>) {
                 if ($line =~ /(\w+)\s*[:=]\s*(-?\d+(?:\.\d+)?)/) {
-                $result_hash{lc($1)} = $2;
-            }
+                    $result_hash{lc($1)} = $2;
+                }
         }
         close($result_fh);
     }
@@ -143,11 +143,4 @@ sub get_file_list {
     my @files = grep { /\.txt$/ && -f File::Spec->catfile($dir, $_)} readdir $dh;
     closedir ($dh);
     return @files;
-}
-
-sub dir_mode {
-    my (@get_golden_files, @get_result_files) = @_;
-    @get_golden_files = get_file_list($golden_file_dir);
-    @get_result_files = get_file_list($result_file_dir); 
-    return (@get_golden_files, @get_result_files);
 }
