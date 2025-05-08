@@ -1,0 +1,8 @@
+Voltage: 1.25V
+Delay = 0.89ns
+Power: 0.31mW
+Temperature: 37.5C
+Leakage: 0.0025mA
+Frequency: 1.20GHz
+Area: 1200.0um2
+Efficiency: 97.8%
