@@ -12,18 +12,18 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Run Perl Comparison
         run: |
           perl compare2.pl \
             --golden=golden \
             --result=result \
-            --fields=Voltage\
+            --fields=Voltage,Delay,Power \
             --output=compare_report.txt
 
       - name: Upload Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: comparison-report
           path: compare_report.txt
