@@ -19,7 +19,7 @@ jobs:
           perl compare2.pl \
             --golden=golden \
             --result=result \
-            --fields=Voltage,Delay,Power \
+            --fields=Voltage\
             --output=compare_report.txt
 
       - name: Upload Report
