@@ -23,7 +23,7 @@ jobs:
             --output=compare_report.txt
 
       - name: Upload Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@ee0669bd1cc54295c223e0bb666b733df41de1c5
         with:
           name: comparison-report
           path: compare_report.txt
