@@ -21,6 +21,7 @@ jobs:
             --result=result \
             --fields=Voltage,Delay,Power \
             --output=compare_report.txt
+
       - name: Upload Report
         uses: actions/upload-artifact@v3
         with:
