@@ -1,5 +1,0 @@
-[FAIL] Voltage
-Golden = 1.25
-Result = 1.27
-Difference = 0.02
-[Current] not found in golden or result file
